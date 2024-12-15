@@ -6,7 +6,7 @@ The bot was created because I'm tired of using excel and wanted some easy bot wh
 
 ## Deployment 
 Digital Ocean Droplet - postgreSQL, + repo as docker image.
-
+Checkout here - @TrackFoodExpensesBot
 
 ## Installation and Setup 
 ```bash
