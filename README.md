@@ -18,8 +18,8 @@ python main.py
 * Don't forget to create .env file with necessary variables
 
 ## Technologies Used
-aiogram
-psycopg2
+* aiogram
+* psycopg2
 
 ## File structure
 main.py - bot structure
