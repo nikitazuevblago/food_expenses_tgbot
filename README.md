@@ -12,7 +12,7 @@ Check it out in telegram - @TrackFoodExpensesBot
 ```bash
 git clone git@github.com:nikitazuevblago/food_expenses_tgbot.git
 cd food_expenses_tgbot
-pip install -r requirementst.txt
+pip install -r requirements.txt
 python main.py
 ```
 * Don't forget to create .env file with necessary variables
