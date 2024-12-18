@@ -127,7 +127,6 @@ def get_user_spending_DB(telegram_id):
     start_of_week = today - timedelta(days=today.weekday())  # Monday is the start of the week
 
     # Format dates to strings for SQL queries
-    date_today = today.strftime('%Y-%m-%d')
     date_tomorrow = tomorrow.strftime('%Y-%m-%d')
     date_first_day_current_month = first_day_current_month.strftime('%Y-%m-%d')
     date_first_day_previous_month = first_day_previous_month.strftime('%Y-%m-%d')
@@ -188,12 +187,6 @@ def get_user_spending_DB(telegram_id):
             AND DATE >= '{date_first_day_current_month}' 
             AND DATE < '{date_tomorrow}';
         """
-        query_current_week_other = f"""
-            SELECT SUM(AMOUNT) FROM SPENDINGS 
-            WHERE TELEGRAM_ID = {telegram_id} AND PURPOSE = 'other'
-            AND DATE >= '{date_start_of_week}' 
-            AND DATE < '{date_tomorrow}';
-        """
 
         # Fetch and convert results
         cursor.execute(query_previous_month_other)
@@ -202,9 +195,6 @@ def get_user_spending_DB(telegram_id):
         cursor.execute(query_current_month_other)
         spending_current_month_other = float(cursor.fetchone()[0] or 0)
 
-        cursor.execute(query_current_week_other)
-        spending_current_week_other = float(cursor.fetchone()[0] or 0)
-
         return {
         "food" :{
             "Previous Month": spending_previous_month_food,
@@ -212,8 +202,7 @@ def get_user_spending_DB(telegram_id):
             "Current Week": spending_current_week_food},
         "other":{
             "Previous Month": spending_previous_month_other,
-            "Current Month": spending_current_month_other,
-            "Current Week": spending_current_week_other}
+            "Current Month": spending_current_month_other}
         }
 
     except Exception as error:

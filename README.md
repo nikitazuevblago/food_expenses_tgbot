@@ -22,7 +22,7 @@ python main.py
 * psycopg2
 
 ## File structure
-main.py - bot structure
+bot.py - bot structure
 db_interaction.py - interaction with database
 
 
